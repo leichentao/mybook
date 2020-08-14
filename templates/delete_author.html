@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除页面</title>
+</head>
+<body style="text-align: center; color: green;font-family: 'Microsoft YaHei UI';font-weight: bold;font-size: 30px">
+删除作者成功，<span id="s1">3</span>秒后跳转回书籍列表页面！
+</body>
+<script>
+    var currentName = document.getElementById("s1").innerText;
+    var t2 = setInterval(function () {
+        currentName = document.getElementById("s1").innerText;
+        document.getElementById("s1").innerText = currentName - 1;
+        if (currentName == 1) {
+            clearInterval(t2);
+            location.href = '/author_list/'
+        }
+    })
+</script>
+</html>

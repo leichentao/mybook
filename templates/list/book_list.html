@@ -1,0 +1,81 @@
+{% extends 'list/base.html' %}
+
+{% block book_active %}
+    active
+{% endblock %}
+
+{% block contenter %}
+    <h1 class="page-header">书籍列表</h1>
+
+    <!-- 面板-开始 -->
+    <div class="panel panel-default">
+        <div class="panel-heading">列表</div>
+        <div class="panel-body">
+            <!--表格上面的那一行-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="请输入关键字查询...">
+                        <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">搜索</button>
+                    </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                <div class="col-md-1 pull-right">
+                    <a class="btn btn-success pull-right" href="/add_book/">添加</a>
+                </div>
+            </div>
+            <!--表格开始-->
+            <div class="table-box">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td class="text-center">序号</td>
+                        <td class="text-center">书籍ID</td>
+                        <td class="text-center">书名</td>
+                        <td class="text-center">操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for book in ret %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ book.id }}</td>
+                            <td>{{ book.book_name }}</td>
+                            <td class="text-center">
+                                <a class="btn btn-danger btn-sm" href="/delete_book?id={{ book.id }}">删除</a>
+                                <a class="btn btn-info btn-sm" href="/edit_book?id={{ book.id }}">编辑</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!--分页开始-->
+            <div>
+                <nav aria-label="Page navigation" class="pull-right">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!--分页结束-->
+        </div>
+    </div>
+
+{% endblock %}
+
